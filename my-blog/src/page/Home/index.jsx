@@ -1,6 +1,7 @@
 import MDEditor from "@uiw/react-md-editor";
 import { useContext, useState } from "react";
 import { post } from "../../service/mockapi";
+import { Card, PostForm } from "../../components";
 import { AuthContext } from "../../context/AuthContext";
 import Swal from "sweetalert2";
 export default function Home() {
@@ -50,41 +51,12 @@ export default function Home() {
     return (
         <>
             <div className="p-10 bg-gray-200">
-                <div className="artboard-demo phone-2 p-6">
+                <Card>
                     <h1 className="text-2x1">
                         Escribe un post y comparte tu conocimiento!
                     </h1>
-                    <div className="mt-10 w-full grid grid-cols-2 gap-6">
-                        <div>
-                            <input
-                                type="text"
-                                placeholder="Type a title"
-                                value={values.title}
-                                name="title"
-                                onChange={handleInputChange}
-                                className="border border-gray-300 rounded-lg p-3 w-full bg-gray-50"
-                            />
-                        </div>
-                        <div>
-                            <input
-                                type="text"
-                                placeholder="Type a resume"
-                                value={values.resume}
-                                name="resume"
-                                onChange={handleInputChange}
-                                className="border border-gray-300 rounded-lg p-3 w-full bg-gray-50"
-                            />
-                        </div>
-                        <div>
-                            <input
-                                type="text"
-                                placeholder="Paste an image link"
-                                value={values.cover}
-                                name="cover"
-                                onChange={handleInputChange}
-                                className="border border-gray-300 rounded-lg p-3 w-full bg-gray-50"
-                            />
-                        </div>
+                    <div className="w-full grid grid-cols-2 gap-6">
+            <PostForm values={values} handleInputChange={handleInputChange} />
                     </div>
                     <div className="mt-10 w-full">
                         <MDEditor
@@ -102,7 +74,7 @@ export default function Home() {
                             Guardar
                         </button>
                     </div>
-                </div>
+                    </Card>
             </div>
         </>
     );
